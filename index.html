@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimal-ui"
+    />
+    <title>Ciklusok</title>
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="../../assets/github-markdown.css" />
+    <link rel="stylesheet" href="../../assets/article.css" />
+
+    <link
+      rel="stylesheet"
+      href="xhttps://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/themes/prism-coy.min.css"
+      integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/themes/prism-solarizedlight.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/line-numbers/prism-line-numbers.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #0d1117;
+        }
+      }
+      a[href$=".mp4"]:before {
+        font-family: FontAwesome;
+        content: "\f008\00a0"; /* 00a0 is a non-breaking space, f1c1 is the pdf symbol */
+      }
+      a[href$=".m4v"]:before {
+        font-family: FontAwesome;
+        content: "\f008\00a0";
+      }
+
+      a[href^="https://"]:before
+      {
+        content: "\1F855\00a0";
+      }
+
+      a[href^="/"]:before {
+        content: "\1F852\00a0";
+      }
+    </style>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body cz-shortcut-listen="true">
+    <h1>A statikus tananyagok az alábbi linken kipróbálhatóak:</h1>
+    <a href="/statikus.html">Statikus tananyagok kipróbálása</a>
+    <br />
+    <br />
+    <article class="markdown-body line-numbers">
+      <h1 id="ciklusok">Ciklusok</h1>
+      <p>
+        A ciklusok olyan vezérlési szerkezetek, melyek lehetővé teszik, hogy a
+        kód egyes részleteit az adott feltételeknek megfelelően egymás után
+        többször futtassuk a kód duplikálása nélkül.
+      </p>
+      <h2 id="for-ciklus"><code>for</code> ciklus</h2>
+      <p>
+        A <code>for</code> ciklus (számlálós ciklus) egy adott
+        <a href="/python_basic/sequence_types/">szekvencia típusú</a> változó
+        elemein halad végig, és minden elem esetén, azaz minden iteráció során
+        futtatja a hatáskörébe tartozó kódrészletet. A hatáskört az
+        <a href="/python_basic/if_statement/">elágazásokhoz</a> hasonlóan a
+        behúzás határozza meg.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">lista <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"alma"</span><span class="token punctuation">,</span><span class="token string">"banán"</span><span class="token punctuation">,</span><span class="token string">"cseresznye"</span><span class="token punctuation">,</span><span class="token string">"dinnye"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> lista_elem <span class="token keyword">in</span> lista<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>lista_elem<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\nEzek a gyümölcsök vannak a listámon"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>alma
+banán
+cseresznye
+dinnye
+
+Ezek a gyümölcsök vannak a listámon
+</code></pre>
+      <p>
+        A <code>lista_elem</code> az úgynevezett "ciklusváltozó". Tetszőlegesen
+        elnevezhetjük, de érdemes odafigyelni rá, nehogy egy már létező változó
+        nevét adjuk meg.
+      </p>
+      <p>A futtatás során a következő történik:</p>
+      <ol>
+        <li>Létrejön a <code>lista</code></li>
+        <li>
+          A <code>lista</code> első eleme (<code>lista[0]</code>) bekerül a
+          <code>lista_elem</code> változóba
+        </li>
+        <li>
+          Lefut a ciklus hatókörében, más néven ciklustörzsben található
+          <code>print</code> metódus, ami kiírja <code>lista_elem</code> változó
+          aktuális tartalmát, ami jelen példában az "alma"
+        </li>
+        <li>
+          A ciklus a következő iterációba lép és most a
+          <code>lista</code> második eleme (<code>lista[1]</code>) kerül be a
+          <code>lista_elem</code> változóba, majd ezzel az új értékkel újra
+          meghívódik a <code>print</code> metódus
+        </li>
+        <li>
+          A 4. lépés megismétlődik a harmadik és a negyedik lista elemmel is
+        </li>
+        <li>
+          A negyedik lista elem megjelenítése után újabb iteráció kezdődne, de
+          elértük a lista végét, ezért nincs mivel felülírni a
+          <code>lista_elem</code> változót, ezért kilépünk a ciklusból
+        </li>
+        <li>
+          A ciklust követő sortól folytatjuk a kód futtatását, és kiírásra kerül
+          a záró üzenet
+        </li>
+      </ol>
+      <p>
+        A jelenlegi vagy a későbbi példák követését megkönnyítheti, ha lépésről
+        lépésre látjuk az egyes változók tartalmának alakulását. A
+        <a href="live.html">pythontutor.com</a> eszköz segítségével a példákat
+        ilyen formában is át lehet tekinteni. Ha valakinek még nincs rutinja a
+        programkódok értelmezésében, akkor sokat segíthet a használata.
+      </p>
+      <p>
+        A <a href="/python_basic/range/">range</a> metódus alkalmazásával
+        számsorozatokon is végigmehetünk a <code>for</code> ciklus segítségével.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Az első tíz négyzetszám:"</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+      <pre><code>Az első tíz négyzetszám:
+1
+4
+9
+16
+25
+36
+49
+64
+81
+100
+</code></pre>
+      <p>
+        Gyakran szükség van annak azonosítására, hogy a lista éppen hányadik
+        eleménél tart a ciklus. Ezért érdemes lehet a lista elemei helyett annak
+        indexein végigmenni, és a ciklus belsejében lekérdezni a lista megfelelő
+        elemét.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">lista <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"alma"</span><span class="token punctuation">,</span><span class="token string">"banán"</span><span class="token punctuation">,</span><span class="token string">"cseresznye"</span><span class="token punctuation">,</span><span class="token string">"dinnye"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> lista_index <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>lista<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>lista_index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">}</span></span><span class="token string">. </span><span class="token interpolation"><span class="token punctuation">{</span>lista<span class="token punctuation">[</span>lista_index<span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\nEzek a gyümölcsök vannak a listámon"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>1. alma
+2. banán
+3. cseresznye
+4. dinnye
+
+Ezek a gyümölcsök vannak a listámon
+</code></pre>
+      <p>
+        Természetesen egynél több utasítás is szerepelhet a ciklustörzsben, és a
+        <code>range</code> metódust is tetszőlegesen paraméterezhetjük. A
+        következő példában a névsorban szereplő minden második hallgatót
+        kihívunk felelni, és felszólítjuk a sorszámával megegyező számú feladat
+        megoldására. A neveket kisbetűsen tároljuk, ezért a ciklustörzsben a
+        megfelelő megjelenítésről is gondoskodnunk kell.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">lista <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"andris"</span><span class="token punctuation">,</span><span class="token string">"betti"</span><span class="token punctuation">,</span><span class="token string">"csilla"</span><span class="token punctuation">,</span><span class="token string">"dani"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> lista_index <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lista<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>lista<span class="token punctuation">[</span>lista_index<span class="token punctuation">]</span><span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">, gyere ki a táblához felelni!"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Kérlek old meg a(z) </span><span class="token interpolation"><span class="token punctuation">{</span>lista_index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">}</span></span><span class="token string">. feladatot!\n"</span></span><span class="token punctuation">)</span>    
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Mára nincs több felelő ..."</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>Andris, gyere ki a táblához felelni!
+Kérlek old meg a(z) 1. feladatot!
+
+Csilla, gyere ki a táblához felelni!
+Kérlek old meg a(z) 3. feladatot!
+
+Mára nincs több felelő ...
+</code></pre>
+      <h2 id="while-ciklus"><code>while</code> ciklus</h2>
+      <p>
+        A <code>while</code> ciklus nem egy szekvencián halad végig, hanem egy
+        adott feltétel teljesüléséig ismétlődik. A szintaxisa nagyon hasonlít az
+        egyszerű elágazáshoz. Ha a
+        <a href="/content/python_basic/if_statement">logikai változó</a> értéke
+        az érték <code>True</code> akkor egyszer lefut a ciklustörzs, majd újra
+        ellenőrzés és futtatás egészen addig, míg egyszer
+        <code>False</code> lesz az érték.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">szamlalo <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> szamlalo <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>szamlalo<span class="token punctuation">)</span>
+    szamlalo <span class="token operator">=</span> szamlalo <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Kész"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>0
+1
+2
+3
+4
+Kész
+</code></pre>
+      <p>A futtatás során a következő történik:</p>
+      <ol>
+        <li>
+          Létrehozunk egy <code>int</code> típusú változót
+          <code>szamlalo</code> néven 0 értékkel.
+        </li>
+        <li>Megvizsgáljuk a <code>szamlalo &lt; 5</code> állítás értékét.</li>
+        <li>
+          Mivel az állítás igaz (<code>True</code>) belépünk a ciklustörzsbe, és
+          végrehajtjuk az utasításokat.
+        </li>
+        <li>
+          Kiírjuk a <code>szamlalo</code> aktuális értékét, ami ezen a ponton
+          még 0.
+        </li>
+        <li>Megnöveljük eggyel a <code>szamlalo</code> értékét.</li>
+        <li>
+          Megismételjük a 2-5. pontokat még 4-szer, addig, amíg a
+          <code>szamlalo</code> értéke eléri az 5-öt. Ekkor a
+          <code>szamlalo &lt; 5</code> állítás értéke már hamis
+          (<code>False</code>), ezért hatodik alkalommal már nem lépünk be a
+          ciklustörzsbe.
+        </li>
+        <li>
+          A ciklus utáni sorral folytatjuk a futtatást, és megjelenítjük a
+          "Kész" üzenetet.
+        </li>
+      </ol>
+      <p>
+        Hamar látható, hogy némi probléma merülhet fel abban az esetben, ha a
+        ciklus feltételben szereplő értéket helytelenül vagy egyáltalán nem
+        módosítjuk. Ebben az esetben egy végtelen ciklusba kerülünk. A
+        <code>for</code> ciklus esetén is előfordulhat hasonló, ha a
+        ciklustörzsben kezdjük el módosítani a listát, amin éppen végigmegyünk.
+      </p>
+      <p>
+        Szerencsére a legtöbb futtatókörnyezet képes jelezni az ilyen hibákat,
+        és nem hagyja, hogy a programunk feleslegesen óriási erőforrásokat
+        pazaroljon el. Ennek ellenére ajánlott odafigyelni ennek a problémának
+        az elkerülésére.
+      </p>
+      <p>
+        A <code>while</code> ciklus egy úgynevezett elöltesztelős ciklus, azaz a
+        ciklustörzs futtatása előtt ellenőrzi a feltételt, így lehet, hogy a
+        tartalma egyszer sem fut le. Más nyelvekkel ellentétben a Pythonban
+        nincs egy ennek megfelelő hátultesztelős szintaxis, de ettől még
+        megvalósítható ez a funkció.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">feltetel <span class="token operator">=</span> <span class="token boolean">True</span> <span class="token comment"># Alapértelmezetten igaz logikai változó</span>
+<span class="token keyword">while</span> feltetel<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Ciklustörzs"</span><span class="token punctuation">)</span> <span class="token comment"># Ennek a helyére jön a ciklustörzs   </span>
+    feltetel <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">&gt;</span> <span class="token number">5</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>Ciklustörzs
+</code></pre>
+      <p>
+        A példa utolsó sorában most egy mindig hamis állítás kerül a
+        <code>feltetel</code>, hogy a struktúra átlátható legyen, de
+        értelemszerűen, egy a ciklustörzsben állított változó alapján érdemes
+        meghatározni az értékét. Látható azonban, hogy egy fixen hamis állítás
+        esetén is lefutott a ciklustörzs legalább egyszer.
+      </p>
+      <h2 id="break-continue"><code>break</code>, <code>continue</code></h2>
+      <p>
+        A ciklusok általában nem csak egy szöveg kiíratására szolgálnak, ennél
+        sokkal komplexebb feladataik vannak. Gyakori, hogy nem akarunk minden
+        iterációban műveleteket végrehajtani, vagy esetleg csak azok egy részére
+        van szükségünk. Ilyenkor a ciklustörzsbe írt elágazásokkal kezelhetjük a
+        különböző eseteket.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">lista <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"alma"</span><span class="token punctuation">,</span><span class="token string">"banán"</span><span class="token punctuation">,</span><span class="token string">"cseresznye"</span><span class="token punctuation">,</span><span class="token string">"dinnye"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> lista_elem <span class="token keyword">in</span> lista<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lista_elem<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>lista_elem<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>cseresznye
+dinnye
+</code></pre>
+      <p>
+        A fenti példában az 5 karakternél hosszabb szavakat írtuk ki a listából.
+        Látható, hogy már egy ilyen rövid kódban is kétszeres behúzást kellett
+        alkalmaznunk. Ha a <code>print</code> helyére egy több száz soros
+        kódrészlet kerülne, akkor annak minden sorát feleslegesen kellene
+        behúzni. Ez elkerülhető abban az esetben ha megfordítjuk a feltételt, és
+        azt mondjuk a programnak, hogy a rövidebb szavak esetén ne csináljon
+        semmit.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">lista <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"alma"</span><span class="token punctuation">,</span><span class="token string">"banán"</span><span class="token punctuation">,</span><span class="token string">"cseresznye"</span><span class="token punctuation">,</span><span class="token string">"dinnye"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> lista_elem <span class="token keyword">in</span> lista<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lista_elem<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>lista_elem<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>cseresznye
+dinnye
+</code></pre>
+      <p>
+        A <code>continue</code> parancs ciklustörzsekben használható. A parancs
+        kiadásakor azonnal megkezdjük a következő iterációt és ignoráljuk a
+        ciklustörzs hátralevő részét. A példában ezzel azt értük el, hogy a
+        <code>print</code> helyére tervezett több száz sor eggyel kevésbé lesz
+        behúzva.
+      </p>
+      <p>
+        A ciklusokat gyakran használják listákban való keresésre (erről majd
+        részletesebben is lesz szó). Ha kereséssel kapcsolatos feladatot kell
+        megoldani, akkor találat esetén nincs értelme tovább iterálni. Például,
+        ha az <strong>első</strong> 5 karakteres szöveget akarom kiíratni:
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">lista <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"alma"</span><span class="token punctuation">,</span><span class="token string">"banán"</span><span class="token punctuation">,</span><span class="token string">"cseresznye"</span><span class="token punctuation">,</span><span class="token string">"dinnye"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> lista_elem <span class="token keyword">in</span> lista<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lista_elem<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Megvan az 5 hosszú: </span><span class="token interpolation"><span class="token punctuation">{</span>lista_elem<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Ez nem az"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>Ez nem az
+Megvan az 5 hosszú: banán
+</code></pre>
+      <p>
+        A <code>break</code> kulcsszó alkalmazásával <em>kiugorhatunk</em> az
+        aktuális ciklusból, és a ciklus utáni kódsorral folytathatjuk a
+        futtatást. Az előző példából a <code>break</code>-et elhagyva
+        feleslegesen átnézzük következő két elemet is, és még kétszer
+        megjelenítjük az "Ez nem az" üzenetet. Milliós listák esetén ez rengeteg
+        erőforrás pazarlást jelentene.
+      </p>
+      <p>
+        A <code>continue</code>-val kapcsolatos példa alapján itt is javíthatunk
+        a kódon:
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python">lista <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"alma"</span><span class="token punctuation">,</span><span class="token string">"banán"</span><span class="token punctuation">,</span><span class="token string">"cseresznye"</span><span class="token punctuation">,</span><span class="token string">"dinnye"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> lista_elem <span class="token keyword">in</span> lista<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lista_elem<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Ez nem az"</span><span class="token punctuation">)</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Megvan az 5 hosszú: </span><span class="token interpolation"><span class="token punctuation">{</span>lista_elem<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">break</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>Ez nem az
+Megvan az 5 hosszú: banán
+</code></pre>
+      <h2 id="folyamatos-adatbekeres">Folyamatos adatbekérés</h2>
+      <p>
+        <a href="/content/python_basic/input">Adatbekérés</a> során zavaró
+        lehet, ha egy hibás bemenet esetén azonnal megáll a program, pedig
+        ilyenkor a felhasználó nem kapott megoldást a problémájára. Egy
+        <code>while</code> ciklus segítségével viszont addig ismételhetjük
+        számára a kérdést, amíg nem sikerül elfogadható bemenetet megadnia.
+      </p>
+      <pre
+        class="line-numbers language-python"
+        tabindex="0"
+      ><code class="language-python"><span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Mondj egy számot és megmondom a négyzetét: "</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> x<span class="token punctuation">.</span>isnumeric<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Nem megfelelő bemenet!\nCsak numerikus érték adható meg.\n"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <pre><code>Mondj egy számot és megmondom a négyzetét: [tíz]
+Nem megfelelő bemenet!
+Csak numerikus érték adható meg.
+
+Mondj egy számot és megmondom a négyzetét: [kilenc]
+Nem megfelelő bemenet!
+Csak numerikus érték adható meg.
+
+Mondj egy számot és megmondom a négyzetét: [10]
+100
+</code></pre>
+      <h1 id="ellenorzo-kerdesek-feladatok">Ellenőrző kérdések, feladatok</h1>
+      <ol>
+        <li>
+          Módosítsd az előző ("Folyamatos adatbekérés") példát úgy, hogy
+          bemenetként a "quit" szót írva kilépjen a program!
+        </li>
+        <li>
+          Készítsünk függvénytáblát, amely 1-től 10-ig megjeleníti a számokat,
+          négyzetüket és köbüket! A megjelenítés 3 oszlopos legyen.
+        </li>
+        <li>
+          Kérjük be egy tanuló jegyeit addig, amíg 0-t nem üt, majd számítsuk ki
+          és jelenítsük meg a jegyek átlagát! Ha mindjárt az elején 0-t üt,
+          akkor jelenjen meg egy üzenet: "Nincs rögzített osztályzat"
+        </li>
+        <li>
+          Készítsünk programot, amely addig kér be egy egész számot, amíg az 1
+          és 90 közé nem esik (a határokat is beleértve)
+          <ul>
+            <li>ha a szám nem megfelelő, akkor kérjük be újra</li>
+            <li>számoljuk és jelenítsük meg a próbálkozások számát is</li>
+            <li>
+              ha 5-nél többször helytelen számot ad meg, akkor írjuk ki, hogy
+              "Nincs több próbálkozási lehetőség!"
+            </li>
+            <li>
+              ha 1-5 lehetőség alatt jó számot ad meg, akkor írjuk ki: "Sikeres
+              adatbevitel!"
+            </li>
+          </ul>
+        </li>
+        <li>
+          Kérj be a felhasználótól egy karakterláncot, majd írd ki megfordítva
+          ciklus segítségével! (Ne használd a <em>slice</em> indexelést a
+          kettőspontokkal!)
+        </li>
+        <li>
+          Kérj be számokat a felhasználótól mindaddig, amíg nem a 42-t adja meg.
+          5 próbálkozásra van lehetősége, ha nem sikerül, írd ki, hogy sajnos
+          nem sikerült. Ha eltalálja, írd ki, hogy „Gratulálok”.
+        </li>
+        <li>
+          Kérj be két számot a felhasználótól. Kérdezd meg tőle a szorzatukat. 3
+          próbálkozásra van lehetőség, ezután írd ki az eredményt. Ha eltalálja,
+          írd ki, hogy „jó megoldás”, majd a program lépjen ki. Feltételezzük,
+          hogy a felhasználó egész számokat ad meg.
+        </li>
+        <li>
+          Kérj be a felhasználótól egy n számot, majd írd ki a Fibonacci számsor
+          első n elemét.
+        </li>
+        <li>
+          Kérj be a felhasználótól egy számot. Ciklus segítségével számítsd ki a
+          faktoriálisát, majd írd ki a kimenetre!
+        </li>
+        <li>
+          Készítsünk programot, amely megadja az
+          <span class="math">\(a_n = (1+1/n)^n\)</span> sorozat első 100 elemét!
+        </li>
+      </ol>
+    </article>
+
+    <p>{last_modified}</p>
+    <select name="x" id="x" multiple error></select>
+
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="../../assets/article.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/line-numbers/prism-line-numbers.js"></script>
+
+    <!-- Video wrap -->
+    <div id="inlineVideo_template" class="jump nodisplay">
+      <video id="centvideo" playsinline="" controls=""></video>
+      <div></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
+    <script src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
